@@ -1,4 +1,5 @@
 import React from 'react';
+import { DarkThemeToggle, useThemeMode } from 'flowbite-react';
 import NiceAvatar, { genConfig, AvatarFullConfig } from 'react-nice-avatar';
 
 const config: AvatarFullConfig = {
@@ -22,13 +23,18 @@ const config: AvatarFullConfig = {
 const myConfig = genConfig(config);
 
 export function Header() {
+  const { mode } = useThemeMode();
+
   return (
     <header className="flex items-center justify-between p-4">
-      <div className="text-lg font-semibold ">
+      <div className="text-lg font-semibold">
         <p>Bem-Vinda</p>
       </div>
-      <div className="inline-block">
-        <NiceAvatar className="w-10 h-10" {...myConfig} />
+      <div className="flex items-center space-x-4">
+        <DarkThemeToggle />
+        <div className={`inline-block ${mode === 'dark' ? 'text-white' : 'text-black'}`}>
+          <NiceAvatar className="w-10 h-10" {...myConfig} />
+        </div>
       </div>
     </header>
   );
