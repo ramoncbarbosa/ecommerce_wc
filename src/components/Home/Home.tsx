@@ -1,22 +1,32 @@
-import { CustomCards } from "../CustomCards/CustomCards";
-import { FooterComponent } from "../FooterComponent/FooterComponent";
-import { Header } from "../Header/Header";
-import { Flowbite } from "flowbite-react";
-
+import { useState } from 'react';
+import { CustomCards } from '../CustomCards/CustomCards';
+import { ModalCards } from '../ModalCards/ModalCards';
+import { Header } from '../Header/Header';
+import { FooterComponent } from '../FooterComponent/FooterComponent';
 
 export function Home() {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+  };
+
   return (
     <main className="container mx-auto px-4 py-8">
-      <Flowbite>
-        <div className="grid gap-4 grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1">
-          <Header/>
-          <CustomCards/> 
-          <CustomCards/> 
-          <CustomCards/> 
-          <CustomCards/>
-          <FooterComponent/>        
-        </div>
-      </Flowbite>
+      <Header/>
+      <CustomCards onClick={handleOpenModal} />
+      <div
+        className={`fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-filter backdrop-blur-lg ${
+          modalOpen ? 'block' : 'hidden'
+        }`}
+      >
+        <ModalCards isOpen={modalOpen} onClose={handleCloseModal} />
+      </div>
+      <FooterComponent/>
     </main>
   );
 }
