@@ -1,4 +1,3 @@
-import React from 'react';
 import { DarkThemeToggle, useThemeMode } from 'flowbite-react';
 import NiceAvatar, { genConfig, AvatarFullConfig } from 'react-nice-avatar';
 
