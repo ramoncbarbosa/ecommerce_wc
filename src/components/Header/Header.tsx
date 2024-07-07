@@ -25,7 +25,7 @@ export function Header() {
   return (
     <header className="flex items-center justify-between p-4">
       <div className="text-lg font-semibold ">
-        <p className='underline'>Bem-Vindo</p>
+        <p>Bem-Vinda</p>
       </div>
       <div className="inline-block">
         <NiceAvatar className="w-10 h-10" {...myConfig} />
